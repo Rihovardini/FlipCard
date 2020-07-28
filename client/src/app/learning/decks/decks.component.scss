@@ -1,0 +1,41 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+.decks {
+  padding: 30px 8%;
+  height: calc(100% - #{$header-height});
+  background-color: $grey-lighter;
+  box-sizing: border-box;
+
+  &__wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__deck {
+    cursor: pointer;
+    margin-top: 10px;
+    width: 300px;
+    overflow: hidden;
+    margin-right: 10px;
+
+    .mat-card-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    button {
+      color: $grey;
+
+      mat-icon {
+        font-size: 20px;
+      }
+
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+}

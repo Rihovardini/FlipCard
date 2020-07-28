@@ -41,11 +41,11 @@ export class AuthService {
   }
 
   public isLoggedIn(): boolean {
-    const accessToken = this.getToken(Tokens.accessToken);
+    const refreshToken = this.getToken(Tokens.refreshToken);
 
-    if (!accessToken) return false;
+    if (!refreshToken) return false;
 
-    const isExpired = this.jwtHelperService.isTokenExpired(accessToken);
+    const isExpired = this.jwtHelperService.isTokenExpired(refreshToken);
 
     return !isExpired;
   }

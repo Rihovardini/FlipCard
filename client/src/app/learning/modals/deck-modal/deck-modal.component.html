@@ -1,0 +1,26 @@
+<form class="deck-modal" [formGroup]="deckForm">
+  <div class="deck-modal__header">
+    <h2 class="deck-modal__title">Edit Deck</h2>
+    <mat-icon class="deck-modal__close-icon" (click)="onClose()"> close </mat-icon>
+  </div>
+
+  <div class="deck-modal__inputs">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name" type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="description" placeholder="Description" type="text">
+    </mat-form-field>
+  </div>
+
+  <div class="deck-modal__buttons">
+    <button
+    type="submit"
+    [disabled]="deckForm.pristine || deckForm.invalid"
+    class="mat-raised-button mat-button-base mat-accent"
+    (click)="onConfirm()"
+  >
+    Save
+  </button>
+  </div>
+</form>

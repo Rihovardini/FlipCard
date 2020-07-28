@@ -1,0 +1,10 @@
+@mixin acua-button {
+  text-align: center;
+  background-color: $acua;
+  color: $white;
+
+  &:hover {
+    background-color: $yellow;
+    color: $black;
+  }
+}

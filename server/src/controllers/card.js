@@ -43,7 +43,7 @@ export class CardController {
 
   static async updateCard (request, response) {
     try {
-      const { id } = request.params;
+      const { id } = request.body;
       const dbAnswer = await CardsItem.findOneAndUpdate({ id }, request.body, { new: true });
     
       response.status(200).json(dbAnswer);

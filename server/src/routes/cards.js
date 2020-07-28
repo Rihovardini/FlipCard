@@ -9,8 +9,6 @@ cardsItemRoutes.get('/:id', CardController.getCard);
 
 cardsItemRoutes.post('/', tokenVerification, CardController.createCard);
 
-cardsItemRoutes.post('/', tokenVerification, CardController.createCards);
-
-cardsItemRoutes.put('/:id', tokenVerification, CardController.updateCard);
+cardsItemRoutes.put('/', tokenVerification, CardController.updateCard);
 
 cardsItemRoutes.delete('/:id', tokenVerification, CardController.deleteCard);

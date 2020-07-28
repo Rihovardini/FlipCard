@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const cardsDeckSchema = mongoose.Schema({
   id: String,
-  userId: String,
+  studentId: String,
   name: String,
   description: String
 });

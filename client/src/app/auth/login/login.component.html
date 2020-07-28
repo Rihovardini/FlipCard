@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<div class="login">
+  <form class="login__form" [formGroup]="loginForm" >
+    <mat-card class="login__card">
+      <mat-card-header>
+        <mat-card-title>Login Form</mat-card-title>
+      </mat-card-header>
+        <mat-form-field>
+          <input matInput formControlName="email" placeholder="Email" type="text">
+          <mat-error *ngIf="loginForm.get('email').hasError('required')">This field is required</mat-error>
+          <mat-error *ngIf="loginForm.get('email').hasError('email')">Email is not valid</mat-error>
+          <mat-error *ngIf="loginForm.get('email').hasError('minlength')">Should be more than 8 symbols</mat-error>
+          <mat-error *ngIf="loginForm.get('email').hasError('maxlength')">Should be lesd than 128 symbols</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="password" placeholder="Password" type="password">
+          <mat-error *ngIf="loginForm.get('password').hasError('required')">This field is required</mat-error>
+          <mat-error *ngIf="loginForm.get('password').hasError('minlength')">Should be more than 8 symbols</mat-error>
+          <mat-error *ngIf="loginForm.get('password').hasError('maxlength')">Should be lesd than 128 symbols</mat-error> 
+        </mat-form-field>
+        <button [disabled]="loginForm.invalid" class="login__button" (click)="logIn()" mat-raised-button> Log In </button>
+      </mat-card>
+  </form>  
+</div>

@@ -33,8 +33,6 @@ export class UserController {
     try {
       const { email, password } = request.body;
       const [ user ] = await User.find({ email });
-
-      console.log(email, password);
   
       if (user === undefined) return response.status(400).json({ message: 'Authentication failed.' });
 
@@ -45,6 +43,8 @@ export class UserController {
       const { firstName, lastName, id } = user; 
       const accessToken = tokenGenerator({ email, id, firstName, lastName }, process.env.ACCESS_SECRET_KEY, '1h');
       const refreshToken = tokenGenerator({ email, id }, process.env.REFRESH_SECRET_KEY, '48h');
+
+      console.log(id, 'at');
   
       if (user.tokens.length >= 5) {
         user.tokens = [refreshToken];

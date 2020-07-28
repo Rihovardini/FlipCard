@@ -21,6 +21,6 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
 
-app.use('/deck', cardsDeckRoutes);
-app.use('/card', cardsItemRoutes);
+app.use('/decks', cardsDeckRoutes);
+app.use('/cards', cardsItemRoutes);
 app.use('/auth', usersRouter);

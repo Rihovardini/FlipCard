@@ -1,0 +1,42 @@
+<form class="card-modal" [formGroup]="cardForm">
+  <div class="card-modal__header">
+    <h2 class="card-modal__title">{{ data.action }} Card</h2>
+    <mat-icon class="card-modal__close-icon" (click)="onClose()"> close </mat-icon>
+  </div>
+
+  <div class="card-modal__inputs">
+    <mat-form-field>
+      <textarea
+          matInput
+          matTextareaAutosize
+          formControlName="term"
+          [matAutosizeMinRows]="1.5"
+          [matAutosizeMaxRows]="9"
+          placeholder="Term"
+      >
+      </textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea
+        matInput
+        matTextareaAutosize
+        formControlName="definition"
+        [matAutosizeMinRows]="1.5"
+        [matAutosizeMaxRows]="9"
+        placeholder="Definition"
+    >
+    </textarea>
+  </mat-form-field>
+  </div>
+
+  <div class="card-modal__buttons">
+    <button
+    type="submit"
+    [disabled]="cardForm.pristine || cardForm.invalid"
+    class="mat-raised-button mat-button-base mat-accent"
+    (click)="onConfirm()"
+  >
+    Save
+  </button>
+  </div>
+</form>

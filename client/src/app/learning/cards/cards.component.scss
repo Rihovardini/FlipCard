@@ -1,0 +1,46 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+.cards {
+  margin: 30px 8%;
+
+  &__add-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+
+    button {
+      @include acua-button;
+    }
+  }
+
+  &__index {
+    width: 10%;
+  }
+
+  &__term {
+    width: 40%;
+  }
+
+  &__definition {
+    width: 40%;
+  }
+
+  &__actions {
+    width: 10%;
+
+    mat-icon {
+      color: $grey;
+      cursor: pointer;
+      font-size: 20px;
+
+      &:hover {
+          color: $black;
+      }
+  }
+  }
+
+  &__table {
+    width: 100%;
+  }
+}

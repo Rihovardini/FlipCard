@@ -1,0 +1,31 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+.home {
+  background-color: $dark-blue;
+  height: calc(100vh - #{$header-height});
+
+  &__title {
+    padding-top: 140px;
+    font-size: $font-size44;
+    color: $white;
+    text-align: center;
+  }
+
+  &__sub-title {
+    padding-top: 40px;
+    font-size: $font-size32;
+    color: $white;
+    text-align: center;
+  }
+
+  &__button-wrapper {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    @include acua-button;
+  }
+}

@@ -5,12 +5,14 @@ import { tokenVerification } from '../middleware/token-verification';
 
 export const cardsDeckRoutes = express.Router();
 
-cardsDeckRoutes.get('/:id', DeckController.getDeck);
+cardsDeckRoutes.get('/:id', DeckController.getDeckById);
+
+cardsDeckRoutes.get('/student/:studentId', DeckController.getDeckByUserId);
 
 cardsDeckRoutes.post('/', tokenVerification, DeckController.createDeck);
 
-cardsDeckRoutes.put('/:id', tokenVerification, DeckController.updateDeck);
+cardsDeckRoutes.put('/', tokenVerification, DeckController.updateDeck);
 
 cardsDeckRoutes.delete('/:id', tokenVerification, DeckController.deleteDeck);
 
-cardsDeckRoutes.get('/:deckId/cards', DeckController.getCardsByDeckId);
+cardsDeckRoutes.get('/:deckId/cards', tokenVerification, DeckController.getCardsByDeckId);

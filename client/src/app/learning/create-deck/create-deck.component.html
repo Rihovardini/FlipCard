@@ -1,0 +1,19 @@
+<div class="create-deck">
+  <form class="create-deck__form" [formGroup]="deckForm" >
+    <mat-card class="create-deck__card">
+      <mat-card-header>
+        <mat-card-title>Create Deck Form</mat-card-title>
+      </mat-card-header>
+        <mat-form-field>
+          <input matInput formControlName="name" placeholder="Name">
+          <mat-error *ngIf="deckForm.get('name').hasError('required')">This field is required</mat-error>
+          <mat-error *ngIf="deckForm.get('name').hasError('maxlength')">Should be lesd than 128 symbols</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="description" placeholder="Description">
+          <mat-error *ngIf="deckForm.get('description').hasError('maxlength')">Should be less than 255 symbols</mat-error> 
+        </mat-form-field>
+        <button (click)="createDeck()" [disabled]="deckForm.invalid" class="create-deck__button" mat-raised-button> Create Deck </button>
+      </mat-card>
+  </form>  
+</div>

@@ -1,0 +1,27 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+.register {
+  display: flex;
+  justify-content: center;
+  height: calc(100% - #{$header-height});
+  background-color: $grey-lighter;
+
+  &__form {
+    display: flex;
+    align-items: center;
+  }
+
+  &__card {
+    max-width: 500px;
+    padding: 30px;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    @include acua-button;
+  }
+}

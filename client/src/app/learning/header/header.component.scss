@@ -1,0 +1,22 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+.header {
+  padding:  0 40px;
+  justify-content: space-between;
+
+  &__title {
+    font-size: $font-size24;
+    cursor: pointer;
+
+    button {
+      margin-left: 20px;
+    }
+  }
+
+  &__navigation {
+    .logout {
+      @include acua-button;
+    }
+  }
+}

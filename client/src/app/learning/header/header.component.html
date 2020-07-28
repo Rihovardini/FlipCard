@@ -1,0 +1,11 @@
+<mat-toolbar class="header" color="primary">
+  <div class="header__title">
+    <span (click)="navigateTo('/student')">FlipCard</span>
+    <button (click)="navigateTo('/student/create-deck')" mat-button>Create Deck</button>
+    <button (click)="navigateTo('/student/decks')" mat-button>Decks</button>
+  </div>
+
+  <div class="header__navigation">
+    <button (click)="logOut()" class="logout" mat-raised-button>Log Out</button>
+  </div>
+</mat-toolbar>

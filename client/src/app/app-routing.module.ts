@@ -2,25 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuardService } from './shared/guards/auth.guard';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LearningGuardService } from './shared/guards/learning.guard';
 
 const routes: Routes = [
-  { 
-    path: 'login',
-    component: LoginComponent
-  },
-  { 
-    path: 'sign-up',
-     component: RegisterComponent
+  {
+    path: '',
+    canActivate: [AuthGuardService],
+    loadChildren:() => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: 'learning',
-    canActivate: [AuthGuardService],
-    loadChildren: () => import('./learning/learning.module').then(m => m.LearningModule)
+    path: 'student',
+    canActivate: [LearningGuardService],
+    loadChildren: () => import('./learning/student.module').then(m => m.StudentModule)
    },
-   { path : '', redirectTo : 'login', pathMatch : 'full' }
-
 ];
 
 @NgModule({

@@ -1,0 +1,50 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+.deck-modal {
+  box-sizing: border-box;
+  display: block;
+  width: 550px;
+  max-height: 600px;
+  overflow: auto;
+
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 20px;
+    padding: 20px;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-family: 'Helvetica', 'robotoregular', sans-serif;
+    font-size: 15px;
+    opacity: 0.7;
+  }
+
+  &__close-icon {
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  &__inputs {
+    padding: 0 20px;
+
+    .mat-form-field {
+        width: 100%;
+    }
+  }
+
+  &__buttons {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      @include acua-button;
+      cursor: pointer;
+    }
+  }
+}
