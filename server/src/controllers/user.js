@@ -32,7 +32,7 @@ export class UserController {
   static async logIn (request, response) {
     try {
       const { email, password } = request.body;
-      const [ user ] = await User.find({ email });
+      const user = await User.findOne({ email });
   
       if (user === undefined) return response.status(400).json({ message: 'Authentication failed.' });
 
@@ -43,8 +43,6 @@ export class UserController {
       const { firstName, lastName, id } = user; 
       const accessToken = tokenGenerator({ email, id, firstName, lastName }, process.env.ACCESS_SECRET_KEY, '1h');
       const refreshToken = tokenGenerator({ email, id }, process.env.REFRESH_SECRET_KEY, '48h');
-
-      console.log(id, 'at');
   
       if (user.tokens.length >= 5) {
         user.tokens = [refreshToken];
@@ -72,20 +70,16 @@ export class UserController {
       const { refreshToken: token } = request.body;
       const { email, id } = await jwt.verify(token, process.env.REFRESH_SECRET_KEY);
   
-      const [ user ] = await User.find({ email });
-
+      const user = await User.findOne({ id });
+      
       const { firstName, lastName } = user; 
       
       const accessToken = tokenGenerator({ email, id, firstName, lastName }, process.env.ACCESS_SECRET_KEY, '1h');
       const refreshToken = tokenGenerator({ email, id }, process.env.REFRESH_SECRET_KEY, '48h');
-      
-      user.tokens = use.tokens.map((item) => {
-        if(item === token) return refreshToken;
-  
-        return item;
-      });
-  
-      await User.findOneAndUpdate({ email }, user, { new: true });
+
+      user.tokens = user.tokens.map((item) => item === token ? refreshToken : item);
+
+      await User.findOneAndUpdate({ id }, user, { new: true });
   
       response.status(200).json({
         message: 'Refresh token success.',

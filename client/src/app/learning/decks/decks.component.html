@@ -1,20 +1,20 @@
 <div class="decks">
   <div class="decks__wrapper">
-    <mat-card (click)="navigateTo(['student', 'decks', deck.id])" *ngFor="let deck of decks" class="decks__deck">
-        <mat-card-title>{{ deck.name }}</mat-card-title>
+    <mat-card *ngFor="let deck of decks" class="decks__deck">
+        <mat-card-title (click)="navigateTo(['student', 'decks', deck.id])">{{ deck.name }}</mat-card-title>
         <mat-card-subtitle>{{ deck.description }}</mat-card-subtitle>
         <mat-card-content>
-          <button mat-button>
+          <button (click)="navigateTo(['student', 'learning', deck.id])" mat-button>
             <mat-icon> play_circle_filled </mat-icon>
             Start Learning
           </button>
         </mat-card-content>
         <mat-card-actions class="deck__actions">
-          <button (click)="openEditModal($event, deck)" mat-button>
+          <button (click)="openEditModal(deck)" mat-button>
             <mat-icon> edit </mat-icon>
             Edit
           </button>
-          <button (click)="deleteDeck($event, deck.id)" mat-button>
+          <button (click)="deleteDeck(deck.id)" mat-button>
             <mat-icon> delete </mat-icon>
             Delete
           </button>

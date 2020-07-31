@@ -1,0 +1,31 @@
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+.learning {
+  padding: 30px 8%;
+  height: calc(100% - #{$header-height});
+  background-color: $grey-lighter;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__flip-card {
+    display: flex;
+    align-items: center;
+
+    button {
+      @include acua-button;
+      margin: 0 10px;
+
+      mat-icon {
+        font-size: 26px;
+      }
+    }
+  }
+
+  &__card-footer {
+    display: flex;
+    justify-content: center;
+  }
+}

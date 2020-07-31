@@ -5,9 +5,9 @@ import { tokenVerification } from '../middleware/token-verification';
 
 export const cardsDeckRoutes = express.Router();
 
-cardsDeckRoutes.get('/:id', DeckController.getDeckById);
+cardsDeckRoutes.get('/:id', tokenVerification, DeckController.getDeckById);
 
-cardsDeckRoutes.get('/student/:studentId', DeckController.getDeckByUserId);
+cardsDeckRoutes.get('/student/:studentId', tokenVerification, DeckController.getDeckByUserId);
 
 cardsDeckRoutes.post('/', tokenVerification, DeckController.createDeck);
 

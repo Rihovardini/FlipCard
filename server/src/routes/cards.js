@@ -5,7 +5,7 @@ import { tokenVerification } from '../middleware/token-verification';
 
 export const cardsItemRoutes = express.Router();
 
-cardsItemRoutes.get('/:id', CardController.getCard);
+cardsItemRoutes.get('/:id', tokenVerification, CardController.getCard);
 
 cardsItemRoutes.post('/', tokenVerification, CardController.createCard);
 

@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ModalInjectorModel } from './modal-injector.model';
 
 @Component({
-    selector: 'sb-modal',
+    selector: 'app-modal',
     templateUrl: './modal.component.html',
     styleUrls: ['./modal.component.scss']
 })

@@ -33,9 +33,7 @@ export class DecksComponent implements OnInit {
     })
   }
 
-  public openEditModal(event: MouseEvent, deck: Deck): void {
-    event.stopPropagation();
-
+  public openEditModal(deck: Deck): void {
     const data = {
       ...deck,
       methods: {
@@ -52,9 +50,7 @@ export class DecksComponent implements OnInit {
     });
   }
 
-  public deleteDeck(event: MouseEvent, id: string): void {
-    event.stopPropagation();
-
+  public deleteDeck(id: string): void {
     this.apiService.deleteDeck(id).subscribe((deletedDeck: Deck) => {
       this.decks = this.decks.filter((deck: Deck) => deck.id !== deletedDeck.id);
     });

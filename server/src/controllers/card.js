@@ -25,22 +25,6 @@ export class CardController {
     }
   }
 
-  static async createCards (request, response) {
-    try {
-      const { cards } = request.body;
-      const savedCards = [];
-
-      for (const card of cards) {
-        const savedCard = await new CardsItem({ ...card,  id: shortid() }).save();
-        savedCards.push(savedCard);
-      }
-
-      response.status(201).json(savedCards);
-    } catch (error) {
-      response.status(400).send(error);
-    }
-  }
-
   static async updateCard (request, response) {
     try {
       const { id } = request.body;

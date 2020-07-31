@@ -18,9 +18,9 @@ import { DecksComponent } from './decks/decks.component';
 import { DeckModalComponent } from './modals/deck-modal/deck-modal.component';
 import { HeaderComponent } from './header/header.component';
 import { StudentComponent } from './student/student.component';
+import { LearningComponent } from './learning/learning.component';
 import { ModalModule } from '../shared/modal/modal.module';
-
-const entryComponents = [CardModalComponent];
+import { FlipCardComponent } from './flip-card/flip-card.component';
 
 const routes: Routes = [
   { 
@@ -29,13 +29,24 @@ const routes: Routes = [
     children: [
       { path: 'create-deck', component: CreateDeckComponent },
       { path: 'decks', component: DecksComponent },
-      { path: 'decks/:id', component:  CardsComponent}
+      { path: 'decks/:id', component:  CardsComponent},
+      { path: 'learning/:id', component: LearningComponent }
     ]
    }
 ];
 
 @NgModule({
-  declarations: [StudentComponent, HeaderComponent, CreateDeckComponent, DecksComponent, CardsComponent, ...entryComponents, DeckModalComponent],
+  declarations: [
+    StudentComponent, 
+    HeaderComponent,
+    CreateDeckComponent,
+    DecksComponent,
+    CardsComponent,
+    CardModalComponent,
+    DeckModalComponent,
+    LearningComponent,
+    FlipCardComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -50,7 +61,6 @@ const routes: Routes = [
     ModalModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
-  ],
-  entryComponents: [...entryComponents]
+  ]
 })
 export class StudentModule { }

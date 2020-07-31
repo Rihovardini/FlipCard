@@ -1,0 +1,12 @@
+<div class="learning">
+  <div class="learning__flip-card">
+    <button (click)="getLeftCard()" mat-icon-button>
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <app-flip-card [term]="currentCard.term" [definition]="currentCard.definition">
+    </app-flip-card>
+    <button (click)="getRightCard()" mat-icon-button>
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>

@@ -29,7 +29,7 @@
           <mat-error *ngIf="registerForm.get('password').hasError('minlength')">Should be more than 8 symbols</mat-error>
           <mat-error *ngIf="registerForm.get('password').hasError('maxlength')">Should be lesd than 128 symbols</mat-error> 
         </mat-form-field>
-        <button [disabled]="registerForm.invalid" class="register__button" (click)="registerUser()" mat-raised-button> Log In </button>
+        <button [disabled]="registerForm.invalid" class="register__button" (click)="registerUser()" mat-raised-button> Sign Up </button>
       </mat-card>
   </form>  
 </div>
