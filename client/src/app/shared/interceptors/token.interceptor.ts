@@ -15,15 +15,13 @@ import { Tokens } from '../constants/token';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  private refreshingInProgress: boolean;
   private accessTokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  private refreshingInProgress: boolean;
   
   constructor(private authService: AuthService) {}
 
   public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    debugger
     const accessToken = this.authService.getToken(Tokens.accessToken);
-
     const requestWithToken = this.addAuthorizationHeader(request, accessToken);
 
     return next.handle(requestWithToken).pipe(
@@ -42,11 +40,7 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   private addAuthorizationHeader(request: HttpRequest<any>, token: string): HttpRequest<any> {
-    if (token) {
-      return request.clone({setHeaders: {Authorization: `Bearer ${token}`}});
-    }
-
-    return request;
+    return token ? request.clone({setHeaders: {Authorization: `Bearer ${token}`}}) : request;
   }
 
   private getRefreshToken(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -63,20 +57,17 @@ export class TokenInterceptor implements HttpInterceptor {
         })
       );
     } else {
-
       return this.accessTokenSubject.pipe(
         filter(token => token !== null),
         take(1),
         switchMap(token => {
-
           return next.handle(this.addAuthorizationHeader(request, token));
         }));
     }
   }
 
-  private logoutAndRedirect(err): Observable<HttpEvent<any>> {
+  private logoutAndRedirect(error: Error): Observable<HttpEvent<any>> {
     this.authService.logOut();
-
-    return throwError(err);
+    return throwError(error);
   }
 }
